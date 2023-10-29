@@ -50,4 +50,4 @@ roomsRouter.get('/allunavlrooms',(req,res)=>{
 })
 
 
-module.exports = roomsRouter
+module.exports=roomsRouter
