@@ -15,6 +15,8 @@ app.post('/data',(req,res)=>{
   res.send(data);
 })
 
+
+
 app.listen(3006,()=>{
   console.log(`server started as 3006`)
 })
