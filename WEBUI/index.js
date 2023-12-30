@@ -85,3 +85,18 @@ saveButton.addEventListener('click',()=>{
 
 const ahtag = document.getElementsByTagName('a')[0];
 
+const spantag = document.createElement('span');
+
+const clickbutton = ()=>{
+  let spanvalue = Math.random()*20;
+  
+  spantag.innerText = `this is span value ${spanvalue}`;
+
+}
+
+
+document.body.append(spantag);
+
+
+
+
