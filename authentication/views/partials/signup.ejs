@@ -1,0 +1,62 @@
+<div class="card" style="width: 60rem; margin:auto">
+  <div class="card-body">
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">First Name</label>
+    <input type="email" class="form-control" id="fn" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+    <input type="email" class="form-control" id="ln" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="ps">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button id = "submit" type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+</div>
+</div>
+<script>
+  const button = document.getElementById("submit");
+  const firstname = document.getElementById("fn");
+  const lastname = document.getElementById("ln");
+  const email = document.getElementById("email");
+  const password = document.getElementById("ps");
+  button.addEventListener('click',async(ev)=>{
+    console.log(firstname.value,lastname.value,email.value,password.value)
+
+    let headersList = {
+      "Accept": "*/*",
+      "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+      "Content-Type": "application/json"
+     }
+     
+     let bodyContent = JSON.stringify({
+       "FirstName":firstname.value,
+       "LastName":lastname.value,
+       "Email":email.value,
+       "password":password.value
+     });
+     
+     let response = await fetch("http://localhost:3006/user/signup", { 
+       method: "POST",
+       body: bodyContent,
+       headers: headersList
+     });
+     
+     let data = await response.text();
+     console.log(data);
+  })
+
+</script>

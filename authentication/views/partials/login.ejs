@@ -1,0 +1,53 @@
+<div class="card" style="width: 60rem; margin:auto">
+  <div class="card-body">
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button id="submit" type="submit" class="btn btn-primary">Log In</button>
+</form>
+</div>
+</div>
+
+<script>
+  const button = document.getElementById("submit");
+
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  button.addEventListener('click',async(ev)=>{
+    console.log(email.value,password.value)
+    ev.preventDefault()
+    let headersList = {
+      "Accept": "*/*",
+      "Content-Type": "application/json"
+     }
+     
+     let bodyContent = JSON.stringify({
+       "email":email.value,
+       "password":password.value
+     });
+     
+     let response = await fetch("http://localhost:3006/user/login", { 
+       method: "POST",
+       body: bodyContent,
+       headers: headersList
+     });
+     
+     let data = await response.text();
+     console.log(data);
+     data=JSON.parse(data)
+     console.log(data);
+
+  })
+
+</script>
